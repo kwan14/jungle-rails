@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Order: <%= @order.id %></h1>
+    <p>
+      You have successfully submitted an order!
+    </p>
+    <p>
+      <table>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Extended</th>
+      </tr>
+      <% @order.line_items.each do |li| %>
+        <tr>
+          <td><%= li.product.name %></td>
+          <td><%= li.product.description %></td>
+          <td><%= li.product.quantity %></td>
+          <td><%= li.product.price %></td>
+          <td><%= li.product.quantity * li.product.price %></td>
+        </tr>
+      <% end %>
+      </table>
+    </p>
+    <p>
+      <h1>Total: <%= humanized_money_with_symbol @order.total_cents %></h1>
+    </p>
+  </body>
+</html>
