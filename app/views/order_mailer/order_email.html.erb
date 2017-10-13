@@ -21,15 +21,15 @@
         <tr>
           <td><%= li.product.name %></td>
           <td><%= li.product.description %></td>
-          <td><%= li.product.quantity %></td>
+          <td><%= li.quantity %></td>
           <td><%= li.product.price %></td>
-          <td><%= li.product.quantity * li.product.price %></td>
+          <td><%= li.quantity * li.product.price %></td>
         </tr>
       <% end %>
       </table>
     </p>
     <p>
-      <h1>Total: <%= humanized_money_with_symbol @order.total_cents %></h1>
+      <h1>Total:<%= humanized_money_with_symbol @order.total_cents/100.0 %></h1>
     </p>
   </body>
 </html>
