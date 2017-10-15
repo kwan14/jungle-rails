@@ -22,6 +22,19 @@
           <dd><%= @product.quantity %></dd>
           <dt>Price</dt>
           <dd><%= @product.price %></dd>
+          <% if session['user_id'] != nil %>
+            <%= render(partial: 'reviews/form', locals: {product: @product, review: Review.new}) %>
+          <% end %>
+          <% @product.reviews.reverse_each do |review| %>
+            <p>
+            <dt>Review</dt>
+            <dd><%= review.description %></dd>
+            <dd><%= review.rating %>/5</dd>
+            <% if session['user_id'] == review.user_id %>
+              <dd><%= button_to('Delete', [@product, review], id: review.id, product_id: @product.id, method: :delete) %></dd>
+            <% end %>
+            </p>
+          <% end %>
         </dl>
       </div>
     </div>

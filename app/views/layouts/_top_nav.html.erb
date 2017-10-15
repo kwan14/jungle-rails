@@ -36,6 +36,7 @@
           <ul class="dropdown-menu">
             <li><%= link_to 'Dashboard', [:admin, :root] %></li>
             <li><%= link_to 'Products',  [:admin, :products] %></li>
+            <li><%= link_to 'Categories',  [:admin, :categories] %></li>
           </ul>
         </li>
         <li>
@@ -43,12 +44,12 @@
             <%= fa_icon "shopping-cart" %> My Cart (<%= cart.size %>)
           <% end %>
         </li>
-    
-          <li><%= link_to "Login", "/login" %></li>
-          <li><%= link_to "Register", "/users/new" %></li>
-        
-          <li><%= link_to "Logout", "/logout" %></li>
-        
+          <% if session['user_id'] != nil %>
+            <li><%= link_to "Logout", "/logout" %></li>
+          <% else %>
+            <li><%= link_to "Login", "/login" %></li>
+             <li><%= link_to "Register", "/users/new" %></li>
+          <% end %>
       </ul>
     </div>
   </div>

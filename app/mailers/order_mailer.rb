@@ -3,6 +3,6 @@ class OrderMailer < ApplicationMailer
   
    def order_email(order)
     @order = order 
-    mail(to: "mendel.kwan@shaw.ca", subject: "TEST: From Rails Jungle")
+    mail(to: @order.email, subject: 'Jungle Order: ' + @order.id.to_s)
    end
 end

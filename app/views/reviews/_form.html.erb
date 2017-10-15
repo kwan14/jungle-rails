@@ -1,0 +1,17 @@
+<%= form_for([product, review]) do |form| %>
+  <p>
+  <div class="field">
+    <dt><%= form.label :Review %></dt>
+    <dd><%= form.text_area :description, id: :review_description %></dd>
+  </div>
+
+  <div class="field">
+    <dt><%= form.label :Rating %></dt>
+    <dd><%= form.select :rating, [1, 2, 3, 4, 5], {},  id: :review_rating %></dd>
+  </div>
+
+  <div class="actions">
+    <dd><%= form.submit %></dd>
+  </div>
+  </p>
+<% end %>

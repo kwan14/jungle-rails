@@ -132,5 +132,29 @@ cat3.products.create!({
   price: 2_483.75
 })
 
+## REVIEWS
+
+puts "Re-creating Reviews ..."
+
+prod1 = Product.find_or_create_by! name: 'Optimal Sleeping Bed'
+prod2 = Product.find_or_create_by! name: 'Human Feet Shoes'
+
+prod1.reviews.create!({
+  user_id: 1,
+  description: "This bed is very comfortable.",
+  rating: 5
+})
+
+prod1.reviews.create!({
+  user_id: 2,
+  description: "This bed is too small.",
+  rating: 1
+})
+
+prod2.reviews.create!({
+  user_id: 5,
+  description: "These shoes are very stylish but they aren't very comfortable.",
+  rating: 4
+})
 
 puts "DONE!"
